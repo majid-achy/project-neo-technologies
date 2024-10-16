@@ -1,3 +1,4 @@
+from transactions.views import get_transactions
 """
 URL configuration for neoApi project.
 
@@ -19,4 +20,5 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('transactions', get_transactions)
 ]
