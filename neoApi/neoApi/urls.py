@@ -1,4 +1,5 @@
 from transactions.views import get_transactions
+from rest_framework_simplejwt import views as jwt_views
 """
 URL configuration for neoApi project.
 
@@ -20,5 +21,7 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('transactions', get_transactions)
+    path('api/transactions', get_transactions),
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh')
 ]

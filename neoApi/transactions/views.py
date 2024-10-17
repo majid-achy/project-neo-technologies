@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import status, pagination
 from .models import Transaction
 from .serializers import TransactionSerializer, ClientTransactionsRequestSerializer
@@ -8,6 +10,8 @@ from .serializers import TransactionSerializer, ClientTransactionsRequestSeriali
 
 # Create your views here.
 @api_view(['Get'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def get_transactions(request):
     client_transaction_request = ClientTransactionsRequestSerializer(data=request.query_params)
     client_transaction_request.is_valid(raise_exception=True)
