@@ -1,7 +1,5 @@
 ## Project Setup
 
-This guide outlines the steps to set up and run a project that provides an API for retrieving transaction data of a client. 
-
 **Prerequisites:**
 
 * Python environment with `pip` installed
@@ -32,7 +30,7 @@ This guide outlines the steps to set up and run a project that provides an API f
   ![image](https://github.com/user-attachments/assets/a9180f77-7f18-42b7-873f-696f811bdbd5)
 * **Database migration:** Run `python manage.py migrate` to apply database migrations.
 * **Create superuser:** Run `python manage.py createsuperuser` to create a user for API authentication. Note down the username and password you choose.
-* **Run ETL script:** Run `python manage.py runetl --source-path="insert the path to the folder containing the clients.csv and transactions.xslx files"`. Replace the placeholder with the actual path. 
+* **Run ETL script:** Run `python manage.py runetl --source-path="insert the path to the folder containing the clients.csv and transactions.xslx files"`. Replace the placeholder with the actual path. For example, `python manage.py runetl --source-path="C:\Users\Desktop\project-neo-technologies\neoApi"`
 * **Start server:** Run `python manage.py runserver` to start the Django development server.
 
 **5. Access Token Acquisition:**
