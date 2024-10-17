@@ -3,11 +3,10 @@ import datetime
 import openpyxl
 
 # Function to generate random transaction data
-def generate_random_transaction(client_id):
+def generate_random_transaction(transaction_id, client_id):
     transaction_types = ["buy", "sell"]
     currencies = ["USD", "EUR", "GBP", "JPY"]
 
-    transaction_id = random.randint(100000, 999999)
     transaction_type = random.choice(transaction_types)
     transaction_date = datetime.date.today() - datetime.timedelta(days=random.randint(0, 365))
     transaction_date = transaction_date.strftime("%Y-%m-%d")
@@ -21,9 +20,11 @@ def generate_random_transaction(client_id):
 # Generate transaction data based on the number of clients
 def generate_transactions(num_clients):
     transactions = []
+    transaction_id = 1
     for client_id in range(1, num_clients + 1):
         for _ in range(random.randint(1, 10)):
-            transactions.append(generate_random_transaction(client_id))
+            transactions.append(generate_random_transaction(transaction_id, client_id))
+            transaction_id = transaction_id + 1
     return transactions
 
 # Create an Excel workbook and worksheet
