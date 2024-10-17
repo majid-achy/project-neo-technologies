@@ -8,7 +8,7 @@ from .models import Transaction
 from .serializers import TransactionSerializer, ClientTransactionsRequestSerializer
 
 
-# Create your views here.
+# Returns Transactions by client_id and optional date range
 @api_view(['Get'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
@@ -27,7 +27,4 @@ def get_transactions(request):
     paginator.default_limit = 10
     result_page = paginator.paginate_queryset(transactions, request)
     serializer = TransactionSerializer(result_page, many=True)
-    # transactions_serializer = TransactionSerializer(transactions, many= True)
     return paginator.get_paginated_response(serializer.data)
-    # else:
-    #     return Response({"error": "test"}, status= status.HTTP_400_BAD_REQUEST)
