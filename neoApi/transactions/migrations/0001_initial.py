@@ -34,10 +34,11 @@ class Migration(migrations.Migration):
             ],
         ),migrations.RunSQL(
             """
-                CREATE MATERIALIZED VIEW transactions_mv AS 
+				CREATE MATERIALIZED VIEW transactions_mv AS 
                 SELECT 
                     client_id,
                     currency,
+					COUNT(*) AS total_transactions,
                     SUM(CASE WHEN transaction_type = 'buy' THEN amount ELSE 0 END) AS total_spent,
                     SUM(CASE WHEN transaction_type = 'sell' THEN amount ELSE 0 END) AS total_gained
                 FROM transactions_transaction
