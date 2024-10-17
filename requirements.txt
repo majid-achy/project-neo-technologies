@@ -1,0 +1,5 @@
+openpyxl==3.1.5
+djangorestframework_simplejwt==5.3.1
+django==5.1.2
+djangorestframework==3.15.2
+psycopg2==2.9.9
